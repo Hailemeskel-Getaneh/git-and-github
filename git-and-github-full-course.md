@@ -325,6 +325,211 @@ git checkout main
 - [Official Git Documentation](https://git-scm.com/doc)
 - [GitHub Learning Lab](https://lab.github.com/)
 - [Pro Git Book](https://git-scm.com/book/en/v2) (free online)
+Here you go, Haile — **clean, exam-ready notes** on all the key Git operations you asked about. This will help you move confidently when handling branches, conflicts, remotes, and more.
+
+---
+
+# **📘 Git Branch & Conflict Handling — Complete Notes**
+
+## **1. Renaming a Branch**
+
+### **A. Rename the branch you are currently on**
+
+```bash
+git branch -m new-branch-name
+```
+
+### **B. Rename a branch you are not currently on**
+
+```bash
+git branch -m old-branch-name new-branch-name
+```
+
+### **C. Rename a branch that exists on a remote**
+
+1. Rename locally:
+
+   ```bash
+   git branch -m old-name new-name
+   ```
+
+2. Delete the old branch name from remote:
+
+   ```bash
+   git push origin --delete old-name
+   ```
+
+3. Push the renamed one:
+
+   ```bash
+   git push origin new-name
+   ```
+
+4. Set upstream:
+
+   ```bash
+   git push --set-upstream origin new-name
+   ```
+
+---
+
+## **2. Deleting Branches**
+
+### **A. Delete a local branch**
+
+```bash
+git branch -d branch-name
+```
+
+💡 Use `-D` to force-delete:
+
+```bash
+git branch -D branch-name
+```
+
+### **B. Delete a remote branch**
+
+```bash
+git push origin --delete branch-name
+```
+
+---
+
+# **3. Handling Merge Conflicts During Pull**
+
+Git sometimes stops pulling because both your local and remote branches changed the same lines.
+You can choose to: **keep local changes**, or **accept incoming remote changes**.
+
+---
+
+## **A. Accept ALL Local Changes while pulling**
+
+This means *your local code overwrites whatever is on the remote*.
+
+### **Method 1 — Using merge strategy**
+
+```bash
+git pull -X ours
+```
+
+✔ Keeps your local code
+✔ Uses remote commits only for merge structure
+✖ Remote file content is ignored
+
+---
+
+## **B. Accept ALL Incoming / Remote Changes while pulling**
+
+This means *remote overwrites everything on your machine*.
+
+### **Method 1 — Using merge strategy**
+
+```bash
+git pull -X theirs
+```
+
+✔ Keeps remote code
+✔ Ignores conflicting local content
+
+---
+
+## **C. Completely discard local changes and force your branch to match remote**
+
+```bash
+git fetch origin
+git reset --hard origin/branch-name
+```
+
+⚠ *This deletes ALL local changes.*
+
+---
+
+# **4. Switching to a Remote Branch**
+
+Remote branches can’t be switched directly — you have to create a local tracking branch.
+
+### **A. First fetch the remote branches**
+
+```bash
+git fetch
+```
+
+### **B. Create a local branch that tracks a remote branch**
+
+```bash
+git checkout -b local-branch-name origin/remote-branch-name
+```
+
+### **Example**
+
+Switching to remote branch `dev`:
+
+```bash
+git checkout -b dev origin/dev
+```
+
+---
+
+# **5. Other Important Notes**
+
+## **A. View all branches (local + remote)**
+
+```bash
+git branch -a
+```
+
+## **B. View only remote branches**
+
+```bash
+git branch -r
+```
+
+## **C. Set an upstream branch**
+
+If your local branch is not linked:
+
+```bash
+git push --set-upstream origin branch-name
+```
+
+## **D. Rename the default branch (e.g., master → main)**
+
+```bash
+git branch -m master main
+git push -u origin main
+git push origin --delete master
+```
+
+## **E. See which branch you are on**
+
+```bash
+git status
+```
+
+## **F. Show the last commits in graph format**
+
+```bash
+git log --oneline --graph --all
+```
+
+## **G. Stash local changes before switching branches**
+
+```bash
+git stash
+```
+
+Restore later:
+
+```bash
+git stash pop
+```
+
+---
+
+# **Need this as a printable PDF?**
+
+Say **"convert this to PDF"** and I’ll generate it instantly.
+
 
 ---
 
