@@ -1,4 +1,4 @@
-
+sdfgh
 ---
 
 # Comprehensive Git and GitHub Course
@@ -124,7 +124,7 @@ git status
 ```bash
 git log
 ```
-- For a compact view:
+- For a compact view:sdfghjkl;'tyuiopfghccfxfc
 ```bash
 git log --oneline
 ```
